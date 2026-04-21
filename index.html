@@ -129,9 +129,9 @@
                     </div>
                 </div>
                 <div id="detail-lesson-list" class="space-y-4 pb-4"></div>
-                <div class="mt-4 pt-4 border-t border-gray-100 pb-6">
-                    <label for="personal-notes-area" class="text-[10px] font-bold uppercase text-gray-400 mb-1 block">Personal:</label>
-                    <textarea id="personal-notes-area" class="notes-area custom-scrollbar" placeholder="Personliga anteckningar..." oninput="savePersonalNotes(this.value)"></textarea>
+                <div class="mt-4 pt-4 border-t border-gray-100 flex flex-col flex-1" style="min-height: 320px;">
+                    <label for="personal-notes-area" class="text-2xl font-bold italic serif-title mb-2 block" style="letter-spacing: 0.02em;">Personal</label>
+                    <textarea id="personal-notes-area" class="notes-area custom-scrollbar flex-1" style="min-height: 260px; resize: none;" placeholder="Personliga anteckningar..." oninput="savePersonalNotes(this.value)"></textarea>
                 </div>
             </div>
             <div class="flex-grow w-2/3 card flex flex-col bg-white min-w-0 shadow-xl overflow-hidden">
