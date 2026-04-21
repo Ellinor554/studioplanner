@@ -128,7 +128,11 @@
                         <button onclick="toggleSidebar()" title="Dölj sidopanel" class="bg-[#c8b49a] text-white px-3 py-2 rounded-lg text-xs font-bold shadow-md hover:bg-[#b8a48a] transition-all transform hover:scale-105">◀ Dölj</button>
                     </div>
                 </div>
-                <div id="detail-lesson-list" class="space-y-4 pb-20"></div>
+                <div id="detail-lesson-list" class="space-y-4 pb-4"></div>
+                <div class="mt-4 pt-4 border-t border-gray-100 pb-6">
+                    <label for="personal-notes-area" class="text-[10px] font-bold uppercase text-gray-400 mb-1 block">Personal:</label>
+                    <textarea id="personal-notes-area" class="notes-area custom-scrollbar" placeholder="Personliga anteckningar..." oninput="savePersonalNotes(this.value)"></textarea>
+                </div>
             </div>
             <div class="flex-grow w-2/3 card flex flex-col bg-white min-w-0 shadow-xl overflow-hidden">
                 <div id="smartboard-content" class="flex-1 overflow-y-auto custom-scrollbar p-10">
@@ -1136,7 +1140,19 @@ function toggleBottomToolbar() {
 }
 
 /* ================================================
-   12. INITIALIZATION
+   12. PERSONAL NOTES
+   ================================================ */
+function savePersonalNotes(value) {
+    localStorage.setItem('personal_notes', value);
+}
+
+function loadPersonalNotes() {
+    const area = document.getElementById('personal-notes-area');
+    if (area) area.value = localStorage.getItem('personal_notes') || '';
+}
+
+/* ================================================
+   13. INITIALIZATION
    ================================================ */
 window.onload = () => {
     migrateData();
@@ -1145,6 +1161,7 @@ window.onload = () => {
     renderFutureWeeks();
     refreshUI();
     updateFontSize(32);
+    loadPersonalNotes();
 
     // Verktygslådan startar dold
     document.getElementById('bottom-toolbar').style.display = 'none';
